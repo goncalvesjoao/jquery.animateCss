@@ -1,5 +1,5 @@
 /*!
- * jquery.animateCss.js v0.1 - 19 Aphril, 2013
+ * jquery.animateCss.js v0.1.2 - 30 May, 2013
  * By João Gonçalves (http://goncalvesjoao.github.com)
  * Hosted on https://github.com/goncalvesjoao/jquery.animateCss
  * Licensed under MIT license.
@@ -31,7 +31,9 @@
     $(selector)
       .on(animationEndEvents, function(e) {
         $(this).removeClass('animated ' + animationClass);
-        if (callback != undefined) callback(e, this);
+        if (callback != undefined) {
+          callback.bind(this)(e);
+        }
         unbindAnimationEnd(this);
       });
   }
